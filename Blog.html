@@ -1,0 +1,203 @@
+<html>
+<head>
+  <link rel="stylesheet" href="BlogStyle.css">
+  <title>Blog-Home</title> 
+</head>
+
+<body>
+  <header>
+    <h1>Smart Thinking</h1>
+  </header>
+
+  <main class="content">
+
+    <div class="carousel">
+        <div class="carousel-slide" id="carouselSlide">
+          <img src="Untitled-1.jpg" alt="Image1">
+          <img src="Untitled-2.jpg" alt="Image2">
+          <img src="Untitled-3.jpg" alt="Image3">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+    <div class="column">
+        <p>Smart thinking is a cognitive process that involves the use of critical and analytical skills to analyze information, evaluate ideas, and solve problems. It is a type of thinking that goes beyond surface-level understanding and involves a deeper level of analysis and comprehension</p>
+    </div>
+
+    <div class="column">
+      <h2>Do People Understand You Always?</h2>
+      <center><img src="R.png" alt="Image6"></center>
+      <p>"The Difficulty of Comprehending Others" refers to the challenge of truly understanding the thoughts, feelings, and perspectives of other people, especially those who are different from ourselves in terms of cultural background, life experiences, and beliefs. This difficulty arises from a combination of factors, including our limited ability to perceive and interpret social cues, our tendency to project our own biases and assumptions onto others, and the inherent complexity of human behavior and communication. Additionally, the Difficulty of Comprehending Others can be exacerbated by the presence of cultural, social, or linguistic barriers, which can create misunderstandings and lead to miscommunication. Overcoming this difficulty requires active listening, empathy, and a willingness to learn about and appreciate different points of view.</p>
+    </div>
+
+    <div class="column">
+      <h2>What is Critical Thinking?</h2>
+      <center><img src="Picture1.jpg" width="400px" height="400" alt="Image7"></center>
+      <p>Critical thinking is the process of analyzing information and arguments in a systematic, objective, and logical manner. It involves questioning assumptions, evaluating evidence, and considering alternative perspectives to arrive at well-reasoned conclusions or decisions. Critical thinking requires an open-minded approach that considers different viewpoints and avoids bias or prejudice. It involves asking questions, identifying and evaluating evidence, and making informed judgments based on reason and evidence. Critical thinking is essential in many aspects of life, including education, professional settings, and personal decision-making. It can help people to better understand complex issues, identify and avoid common logical fallacies, and make more informed decisions based on evidence and reason.</p>
+    </div>
+    
+  <div class="video">
+    <video controls="">
+      <source src="Video.mp4" type="video/mp4">
+    </video>
+  </div><br><br>
+
+  <div class="contact">
+    <h2>Contact Us</h2>
+    <form id="contactUs">
+      <div>
+        <label for="name">Name:</label>&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        <input type="text" id="name" required>
+      </div><br>
+      <div>
+        <label for="telephone">Telephone number:</label>&nbsp; &nbsp; 
+        <input type="tel" id="telephone" required>
+      </div><br>
+      <div>
+        <label for="email">Email:</label>&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+        <input type="email" id="email" required>
+      </div>
+      <br>
+      <button type="submit" class="submit">Submit</button>
+    </form>
+  </div>
+
+  <div class="image-container">
+    <img id="image" src="Image5.jpg" alt="Image">
+  </div>
+  <br>
+  <div><center>
+    <button id="increaseBtn">Increase Size</button>
+    <button id="decreaseBtn">Decrease Size</button>
+  </center></div><br>
+  
+  <div class="blog">
+    <img id="movingImage" src="Image4.jpg" alt="Moving Image">
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide img');
+    const totalSlides = slides.length;
+    const slideWidth = slides[0].clientWidth;
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+    }
+
+    function updateCarousel() {
+        const offset = currentSlide * -slideWidth;
+        document.querySelector('.carousel-slide').style.transform = `translateX(${offset}px)`;
+    }
+
+    setInterval(nextSlide, 2000);
+
+    const movingImage = document.getElementById('movingImage');
+    movingImage.addEventListener('click', function() {
+    movingImage.classList.toggle('clicked');
+        });
+
+    function plusSlides(n) {
+    showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    }
+
+    const image = document.getElementById('image');
+    const increaseBtn = document.getElementById('increaseBtn');
+    const decreaseBtn = document.getElementById('decreaseBtn');
+    const step = 20;
+
+    increaseBtn.addEventListener('click', function() {
+        const currentWidth = image.clientWidth;
+        const currentHeight = image.clientHeight;
+        const newWidth = currentWidth + step;
+        const newHeight = (currentHeight / currentWidth) * newWidth;
+        image.style.width = newWidth + 'px';
+        image.style.height = newHeight + 'px';
+        });
+
+    decreaseBtn.addEventListener('click', function() {
+        const currentWidth = image.clientWidth;
+        const currentHeight = image.clientHeight;
+        const newWidth = currentWidth - step;
+        const newHeight = (currentHeight / currentWidth) * newWidth;
+        image.style.width = newWidth + 'px';
+        image.style.height = newHeight + 'px';
+        });
+
+    const contactUs = document.getElementById('contactUs');
+
+    contactUs.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const nameInput = document.getElementById('name');
+    const telephoneInput = document.getElementById('telephone');
+    const emailInput = document.getElementById('email');
+
+    const name = nameInput.value.trim();
+    const telephone = telephoneInput.value.trim();
+    const email = emailInput.value.trim();
+
+    const nameRegex = /^[a-zA-Z0-9_\s]{3,30}$/;
+    const telephoneRegex = /^0[0-9]{9}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!nameRegex.test(name)) {
+        alert('Invalid username. Please use only letters, numbers, underscores,space and hyphens (3 to 30 characters).');
+        nameInput.focus();
+        return;
+    }
+
+    if (!telephoneRegex.test(telephone)) {
+        alert('Invalid phone number. Please enter a 10-digit phone number.');
+        telephoneInput.focus();
+        return;
+    }
+
+    if (!emailRegex.test(email)) {
+        alert('Invalid email address. Please enter a valid email address.');
+        emailInput.focus();
+        return;
+    }
+
+    alert('Form submitted successfully!');
+    contactUs.reset();
+        });
+    });
+
+  </script>
+
+  </main>
+
+  <footer>
+    <p>@ 2023 Critical Thinking and Problem Solving Blogs. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

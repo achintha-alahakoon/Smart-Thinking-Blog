@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+header {
+    color: black;
+    padding: 10px;
+    text-align: center;
+    font-size: 30px;
+  }
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 900px;
+    height: 500px;
+    position: relative;
+    margin: 0 auto;
+  }
+
+.carousel-slide {
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    transition: transform 0.3s ease;
+  }
+
+.carousel-slide img {
+    width: 100%;
+    width: 900px;
+    height: 500px;
+  }
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+  
+.active, .dot:hover {
+    background-color: #717171;
+  }
+
+.column {
+    margin: 30px;
+    padding: 20px;
+    text-align: left;
+    font-size: 20px;
+  }
+
+.video {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+.blog {
+    position: relative;
+  }
+  
+#movingImage {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    width: 350px;
+    height: 250px;
+  }
+  
+#movingImage.clicked {
+    right: 10px;
+    left: auto;
+  }
+
+.image-container {
+    text-align: center;
+  }
+  
+#image {
+    width: 300px;
+    height: auto;
+    transition: all 0.3s ease;
+  }
+  
+button {
+    background-color: #ccc;
+    color: white;
+    padding: 15px 30px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+  }
+
+button.submit {
+    background-color: rgb(50, 215, 50);
+  }
+
+.contact {
+    margin: auto;
+    width: 75%;
+    border-radius: 12px;
+    padding: 8px;
+    background-color: white;
+  }
+
+footer {
+    background-color: black;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
